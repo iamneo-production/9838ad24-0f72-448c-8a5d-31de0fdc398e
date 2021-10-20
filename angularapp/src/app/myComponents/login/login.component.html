@@ -1,0 +1,30 @@
+<div *ngIf="!isLoggedIn">
+  <div class="container-fluid mt-5 d-flex justify-content-between">
+    <div>
+      <img class="login-img" src="../../../assets/static/images/virtusaLogo.png"/>
+    </div>
+    <div class="form">
+      <h1>Login</h1>
+      <div class="form-floating mb-3 mt-4">
+        <input type="email" class="form-control" id="floatingInput" name="email" [(ngModel)]="email" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" id="floatingPassword" name="password" [(ngModel)]="password"  placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="d-flex justify-content-between mb-3">
+        <a href="#">
+            Forgot Password?
+        </a>
+        <a routerLink="/signup">
+          New User?
+        </a>
+      </div>
+      <div align="right" class="form-floating mb-3">
+        <button (click)="login()"  type="submit" class="btn btn-lg btn-primary"><fa-icon [icon]="faLogin"></fa-icon>&nbsp;Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-home *ngIf="isLoggedIn" routerLink='/route'></app-home>

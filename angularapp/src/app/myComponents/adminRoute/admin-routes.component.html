@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="search mt-3">
+        <input class="form-control me-3" [(ngModel)]="keyword" id="src-bar" placeholder="Search" />
+        <!-- <button type="button" class="btn btn-primary btn-md"><fa-icon [icon]="faSearch"></fa-icon>&nbsp;Search</button> -->
+    </div>
+    <div class="main m-5">
+        <div class="leftContainer">
+            <div class="tickets" *ngFor="let tick of data | filter:keyword; let i=index">
+                <div (click)="select(tick)" [ngClass]="curr==tick?'bg-success':'bg-secondary'" class="card text-white mb-3">
+                    <div class="card-header">Ticket-{{i+1}}</div>
+                    <div class="card-body">
+                        <p class="card-text">
+                        {{tick.startPoint}} 
+                        <br/>to
+                        <br/>{{tick.endPoint}}<br/> 
+                        <br/>{{tick.time}}
+                        <br/>{{tick.carModel}}<br/>{{tick.registrationNo}}
+                        <div class="can" style="float:left; color:red"><fa-icon (click)="deleteData(tick.registrationNo)" [icon]="faTrash"></fa-icon></div>
+                        <div style="float:right; color:gold">{{tick.seatsAvailable}} seats</div>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightContainer">
+            <div class="bookingArea">
+                <h1 *ngIf=selected class="bg-secondary p-3" align="center">Update</h1>
+                <h1 *ngIf=!selected class="bg-secondary p-3" align="center">Add</h1>
+                <form class="form p-4">
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="src" name="source" [(ngModel)]="formData.startPoint" placeholder="Source" required>
+                        <input *ngIf=selected type="string" class="form-control" id="src" name="source" [(ngModel)]="formData.startPoint" required>
+                        <label class="" for="src">Source</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="des" name="des" [(ngModel)]="formData.endPoint" placeholder="Destination" required>
+                        <input *ngIf=selected type="string" class="form-control" id="des" name="des" [(ngModel)]="formData.endPoint" required>
+                        <label for="des">Destination</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="date" name="date" [(ngModel)]="formData.date" placeholder="dd-mm-yyyy" required>
+                        <input *ngIf=selected type="string" class="form-control" id="date" name="date" [(ngModel)]="formData.date" required>
+                        <label for="date">Date<small>(dd-mm-yyyy)</small></label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="time" name="time" [(ngModel)]="formData.time" placeholder="hr:min AM/PM" required>
+                        <input *ngIf=selected type="string" class="form-control" id="time" name="time" [(ngModel)]="formData.time" required>
+                        <label for="time">Time<small>(hr:min AM/PM)</small></label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="number" class="form-control" id="seats" name="seats" [(ngModel)]="formData.seatsAvailable"  placeholder="" required>
+                        <input *ngIf=selected type="number" class="form-control" id="seats" name="seats" [(ngModel)]="formData.seatsAvailable" required>
+                        <label for="seats">Seats<small>(max 4)</small></label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="number" class="form-control" id="dis" name="distance" [(ngModel)]="formData.distance" placeholder="" required>
+                        <input *ngIf=selected type="number" class="form-control" id="dis" name="distance" [(ngModel)]="formData.distance" required>
+                        <label for="dis">Distance</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="cm" name="carModel" [(ngModel)]="formData.carModel" placeholder="" required>
+                        <input *ngIf=selected type="string" class="form-control" id="cm" name="carModel" [(ngModel)]="formData.carModel" required>
+                        <label for="cm">Car Model</label>
+                    </div>
+                    <div class="form-floating mb-3 mt-4">
+                        <input *ngIf=!selected type="string" class="form-control" id="regno" name="regno" [(ngModel)]="formData.registrationNo"  placeholder="" required>
+                        <input *ngIf=selected type="string" class="form-control" id="regno" name="regno" [(ngModel)]="formData.registrationNo" required>
+                        <label for="regno">RegNo</label>
+                    </div>
+                    <p *ngIf=!selected style="margin:auto;" class="form-floating mt-4">
+                        <button (click)="addData()" type="submit" class="btn btn-lg btn-primary">Add</button>
+                    </p>
+                    <p *ngIf=selected style="margin:auto;" class="form-floating mt-4">
+                        <button (click)="updateData()" type="submit" class="btn btn-lg btn-primary">Update</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  

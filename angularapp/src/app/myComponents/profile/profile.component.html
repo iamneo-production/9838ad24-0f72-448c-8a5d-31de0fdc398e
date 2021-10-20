@@ -1,0 +1,33 @@
+<div style="align-items: flex-end;" class="container-fluid mt-3 p-5 d-flex justify-content-between">
+    <div style="align-self: center;" class="profile">
+        <img class="profile-img" src="https://image.flaticon.com/icons/png/512/17/17004.png">
+    </div>
+    <div class="form">
+        <h2 align="center" style="border-bottom: 3px solid black; font-family: 'Times New Roman', Times, serif; border-radius: 9px 9px 0px 0px;" class="bg-secondary p-4"><strong>Update Profile</strong></h2>
+        <div class="p-4">
+            <div class="form-group mb-2">
+              <label for="exampleInput0">Email Id</label>
+              <input value={{formData.emailId}} [(ngModel)]="formData.emailId" type="email" id="exampleInput0"class="form-control form-control-lg mt-1" id="exampleInput0"  placeholder="Email" readonly>
+            </div>
+            <div class="form-group mb-2">
+              <label for="exampleInput1">Name</label>
+              <input value={{formData.CustomerName}} [(ngModel)]="formData.CustomerName" type="text" class="form-control form-control-lg mt-1" id="exampleInput1"  placeholder="Name">
+            </div>
+            <div class="form-group mb-2">
+              <label for="exampleInput2">MobileNumber</label>
+              <input value={{formData.MobileNumber}} [(ngModel)]="formData.MobileNumber" type="text" class="form-control form-control-lg mt-1" id="exampleInput2" placeholder="MobileNumber">
+            </div>
+            <div class="form-group mb-2">
+              <label for="exampleInputPassword1">Password</label>
+              <input value={{formData.Password}} [(ngModel)]="formData.Password" type="password" class="form-control form-control-lg mt-1" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group mb-3">
+                <label for="exampleInputPassword2">Confirm Password</label>
+                <input value={{cpass}} [(ngModel)]="cpass" type="password" class="form-control form-control-lg mt-1" id="exampleInputPassword2" placeholder="Confirm Password">
+            </div>
+            <div align="center" class="form-group">
+                <button (click)="update()" type="submit" class="btn btn-primary btn-lg">Update</button>
+            </div>
+          </div>
+      </div>
+    </div>    

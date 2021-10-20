@@ -1,0 +1,24 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AdminRoutesComponent } from './admin-routes.component';
+
+describe('AdminHomeComponent', () => {
+  let component: AdminRoutesComponent;
+  let fixture: ComponentFixture<AdminRoutesComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [AdminRoutesComponent],
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AdminRoutesComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

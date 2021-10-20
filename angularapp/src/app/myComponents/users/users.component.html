@@ -1,0 +1,93 @@
+<div class="container-fluid">
+    <div class="search mt-3">
+        <input class="form-control me-3" [(ngModel)]="keyword" id="src-bar" placeholder="Search" />
+        <!-- <button (click)="search()" type="button" class="btn btn-primary btn-md"><fa-icon [icon]="faSearch"></fa-icon>&nbsp;Search</button>&nbsp; -->
+    </div>
+    <div class="main mt-5">
+        <div class="leftContainer">
+            <table class="table table-striped" style="height:10vh;overflow: scroll;">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name </th>
+                    <th scope="col">Role </th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let emp of empData | filter:keyword;let i=index;">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{emp.username}}</td>
+                    <td>Employee</td>
+                    <td>
+                        <a (click)="edit(0,emp)"><fa-icon style="color:forestgreen" [icon]="faEdit"></fa-icon></a>
+                        &nbsp;
+                        <a (click)="delete(0,emp)"><fa-icon style="color:red" [icon]="faDelete"></fa-icon></a>
+                    </td>
+                </tr>
+                <tr *ngFor="let user of userData | filter:keyword;let i=index;">
+                    <th scope="row">{{i+1+empData.length}}</th>
+                    <td>{{user.customerName}}</td>
+                    <td>User</td>
+                    <td>
+                        <a (click)="edit(1,user)"><fa-icon style="color:forestgreen" [icon]="faEdit"></fa-icon></a>
+                        &nbsp;
+                        <a (click)="delete(1,user)"><fa-icon style="color:red" [icon]="faDelete"></fa-icon></a>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>
+                        <a><fa-icon style="color:forestgreen" [icon]="faEdit"></fa-icon></a>
+                        &nbsp;
+                        <a><fa-icon style="color:red" [icon]="faDelete"></fa-icon></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry the Bird</td>
+                    <td>@twitter</td>
+                    <td>
+                        <a><fa-icon style="color:forestgreen" [icon]="faEdit"></fa-icon></a>
+                        &nbsp;
+                        <a><fa-icon style="color:red" [icon]="faDelete"></fa-icon></a>
+                    </td>
+                </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="rightContainer">
+            <div class="bookingArea">
+                <h1 class="bg-secondary p-3" align="center">Edit</h1>
+                <div class="p-4">
+                    <div class="form-group mb-2">
+                      <label for="exampleInput0">Email Id</label>
+                      <input value={{formData.email}} [(ngModel)]="formData.email" type="email" id="exampleInput0"class="form-control form-control-lg mt-1" id="exampleInput0"  placeholder="Email" readonly>
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="exampleInput1">Name</label>
+                      <input value={{formData.name}} [(ngModel)]="formData.name" type="text" class="form-control form-control-lg mt-1" id="exampleInput1"  placeholder="Name">
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="exampleInput2">MobileNumber</label>
+                      <input value={{formData.mobileNumber}} [(ngModel)]="formData.mobileNumber" type="text" class="form-control form-control-lg mt-1" id="exampleInput2" placeholder="MobileNumber">
+                    </div>
+                    <div class="form-group mb-2">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input value={{formData.password}} [(ngModel)]="formData.password" type="password" class="form-control form-control-lg mt-1" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input value={{cpass}} [(ngModel)]="cpass" type="password" class="form-control form-control-lg mt-1" id="exampleInputPassword2" placeholder="Confirm Password">
+                    </div>
+                    <div align="center" class="form-group">
+                        <button *ngIf="!selected" (click)="update()" type="submit" class="btn btn-primary btn-lg" disabled>Update</button>
+                        <button *ngIf="selected" (click)="update()" type="submit" class="btn btn-primary btn-lg">Update</button>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

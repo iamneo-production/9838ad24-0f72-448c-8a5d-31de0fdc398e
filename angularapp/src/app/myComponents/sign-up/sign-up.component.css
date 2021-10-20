@@ -1,0 +1,31 @@
+.form {
+  width: 35%;
+  margin: auto;
+  font-size: 1.1rem;
+}
+.login-img {
+  padding: 0.5rem;
+  margin: auto;
+  margin-left: 0.9rem;
+  width: 40vw;
+  height: 65vh;
+}
+@media screen and (max-width: 728px) {
+  .form {
+    width: 60%;
+  }
+  .login-img {
+    display: none;
+  }
+}
+@media screen and (max-width: 1370px) {
+  .login-img {
+    width: 40vw;
+    height: 40vh;
+  }
+}
+@media screen and (max-width: 480px) {
+  .form {
+    width: 80%;
+  }
+}

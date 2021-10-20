@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="search mt-3">
+        <input class="form-control me-3" [(ngModel)]="keyword" id="src-bar" placeholder="Search" />
+        <!-- <button (click)="search()" type="button" class="btn btn-primary btn-md"><fa-icon [icon]="faSearch"></fa-icon>&nbsp;Search</button>&nbsp; -->
+        <button (click)="endTrip()" type="button" class="btn btn-danger btn-md"><fa-icon [icon]="faPO"></fa-icon>&nbsp;End Trip</button>
+    </div>
+    <div class="main m-5">
+        <div class="leftContainer">
+            <div class="tickets" *ngFor="let tick of data | filter:keyword; let i=index">
+                <div (click)="select(tick)" [ngClass]="curr==tick?'bg-info':'bg-secondary'" class="card text-white mb-3">
+                    <div class="card-header">Ticket-{{i+1}}</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                        {{tick.startPoint}} 
+                        <br/>to
+                        <br/>{{tick.endPoint}}<br/> 
+                        <br/>{{tick.time}}
+                        <br/>{{tick.carModel}}<br/>{{tick.registrationNo}}
+                        <div style="float:right; color:cyan">{{tick.seatsAvailable}} seats</div>
+                        <br/>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="rightContainer">
+            <div class="bookingArea">
+                <h1 class="bg-secondary p-3" align="center">Booking Area</h1>
+                <form class="p-4">
+                    <div class="form-group mb-3" *ngFor="let fd of formData | keyvalue; let i=index">
+                      <label for="ff">{{fd.key}}</label>
+                      <input type="text" class="form-control form-control-lg form-control.disabled" id={{i}} name="ff" value={{fd.value}} readonly>
+                    </div>
+                    <div align="center" class="form-group form-check  mt-4">
+                        <button (click)="book()" *ngIf="selected" type="submit" class="btn btn-lg btn-primary">Book</button>
+                        <button (click)="book()" *ngIf="!selected" type="submit" class="btn btn-lg btn-primary" disabled>Book</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  

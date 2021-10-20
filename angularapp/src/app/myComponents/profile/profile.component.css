@@ -1,0 +1,54 @@
+.form {
+  width: 50%;
+  border-radius: 12px;
+  border: 2px solid black;
+  margin: 30px;
+  color: black;
+  font-size: 1.7rem;
+  height: max-content;
+  background: #f8f9fa;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.profile-img {
+  padding: 0.5rem;
+  margin: auto;
+  margin-left: 0.9rem;
+  width: 30vw;
+  align-self: center;
+  height: max-content;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+@media screen and (max-width: 728px) {
+  .form {
+    width: 90%;
+  }
+  .profile-img {
+    width: 80px;
+    height: 80px;
+    display: none;
+  }
+}
+@media screen and (max-width: 1370px) {
+  .login-img {
+    width: 30vw;
+    height: 60vh;
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile {
+    order: 1;
+  }
+  .form {
+    order: 2;
+  }
+}

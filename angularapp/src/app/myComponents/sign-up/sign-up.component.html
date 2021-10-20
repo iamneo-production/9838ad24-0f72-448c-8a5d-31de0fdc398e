@@ -1,0 +1,38 @@
+<div>
+    <div class="container-fluid mt-5 d-flex justify-content-between">
+        <div>
+          <img class="login-img" src="../../../assets/static/images/virtusaLogo.png"/>
+        </div>
+        <div class="form">
+          <h1>Sign Up</h1>
+          <div class="form-floating mb-3 mt-4">
+            <input type="email" class="form-control" id="floatingInput1" name="email" [(ngModel)]="email" placeholder="name@example.com">
+            <label for="floatingInput1">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput2" name="username" [(ngModel)]="username" placeholder="Pranay">
+            <label for="floatingInput2">Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="string" name="floatingInput2" class="form-control" id="floatingInput3" name="mobileNumber" [(ngModel)]="mobileNumber" placeholder="">
+            <label for="floatingInput3">Phone Number</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword1" name="password" [(ngModel)]="password" placeholder="Password">
+            <label for="floatingPassword1">Password</label>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="floatingPassword2" name="cpassword" [(ngModel)]="cpassword" placeholder="Confirm Password">
+            <label for="floatingPassword2">Confirm Password</label>
+          </div>
+          <div align="right" class="mb-3">
+            <a routerLink="/login">
+              Login?
+            </a>
+          </div>
+          <div align="right" class="form-floating mb-3">
+            <button (click)="signUp()" type="submit" class="btn btn-lg btn-primary"><fa-icon [icon]="faSignUp"></fa-icon>&nbsp;Sign Up</button>
+          </div>
+        </div>
+      </div>
+</div>

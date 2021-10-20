@@ -1,0 +1,88 @@
+.search {
+  width: 80vw;
+  display: flex;
+  margin: auto;
+}
+.search input {
+  width: 100%;
+  font-size: 1.5rem;
+}
+/* .search button {
+  width: 20%;
+} */
+@media screen and (min-width: 768px) {
+  .search button {
+    width: 10%;
+  }
+}
+.main,
+.leftContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.leftContainer {
+  width: 60%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.rightContainer {
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+  width: 40%;
+  height: max-content;
+  position: sticky;
+  right: 0;
+  top: 20vh;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+.tickets {
+  font-size: 1.5rem;
+  /* margin: 1.5rem; */
+  width: 20vw;
+  padding: 1.5rem;
+  min-height: max-content;
+  /* background: lavender; */
+  text-align: center;
+  min-width: max-content;
+  border-radius: 9px;
+}
+.card {
+  width: 20vw !important;
+  min-height: 30vh;
+  display: flex;
+}
+.card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+@media screen and (max-width: 950px) {
+  .card {
+    width: 35vw !important;
+  }
+}
+.bookingArea {
+  width: 100%;
+  font-size: 1rem;
+}
+.bookingArea h1 {
+  border-radius: 8px 8px 0px 0px;
+}
+.form {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+}
+.form div {
+  width: 48%;
+  display: flex;
+}
+@media screen and (max-width: 1128px) {
+  .form div {
+    width: 90%;
+  }
+}
+.can:hover {
+  transform: translateY(-5px);
+}

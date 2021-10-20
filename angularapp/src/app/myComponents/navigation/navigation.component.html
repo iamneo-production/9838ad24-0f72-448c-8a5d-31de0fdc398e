@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a (click)="toggle(1)" [ngClass]="{'active': activeItem==1}" class="nav-link" routerLink="/route"><fa-icon [icon]="faHome"></fa-icon>&nbsp;Home</a>
+        </li>
+        <li *ngIf="isAdmin" class="nav-item">
+          <a (click)="toggle(2)" [ngClass]="{'active': activeItem==2}" class="nav-link" routerLink="/users"><fa-icon [icon]="faUsers"></fa-icon>&nbsp;Users</a>
+        </li>
+        <li *ngIf="!isAdmin" class="nav-item">
+          <a (click)="toggle(2)" [ngClass]="{'active': activeItem==2}" class="nav-link" routerLink="/profile"><fa-icon [icon]="faProfile"></fa-icon>&nbsp;Profile</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+      </ul>
+      <h4><a style="color:red; cursor:pointer;" (click)="logout();"><fa-icon [icon]="faLogout"></fa-icon>&nbsp;Logout</a></h4>
+</div>
