@@ -60,10 +60,14 @@ export class ProfileComponent implements OnInit {
         .subscribe({
           next: (data) => {
             alert('Successfully Updated');
-            console.log(data);
+            this.formData.Password = '';
+            this.cpass = '';
+            // console.log(data);
           },
           error: (err) => {
             alert('Successfully Updated');
+            this.formData.Password = '';
+            this.cpass = '';
             // console.log(data);
           },
         });

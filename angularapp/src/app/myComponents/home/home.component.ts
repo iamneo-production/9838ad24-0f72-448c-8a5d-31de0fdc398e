@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   data: any = [];
   formData: any = {};
   curr: any = {};
+  last: any = {};
   selected: boolean = false;
   keyword: string = '';
   constructor(private router: Router, private http: HttpClient) {}
@@ -84,23 +85,43 @@ export class HomeComponent implements OnInit {
           })
           .subscribe({
             next: (data) => {
-              console.log('ride ended');
               alert('Ride Ended');
+              this.last.seatsAvailable += 1;
+              this.formData['Seats_Left'] = this.last.seatsAvailable;
+              this.http
+                .put<any>('/admin/editRoutes', {
+                  startPoint: this.last.startPoint,
+                  endPoint: this.last.endPoint,
+                  distance: this.last.distance,
+                  time: this.last.time,
+                  date: this.last.date,
+                  carModel: this.last.carModel,
+                  registrationNo: this.last.registrationNo,
+                  seatsAvailable: this.last.seatsAvailable,
+                })
+                .subscribe({
+                  next: (res) => {
+                    this.resetData();
+                  },
+                  error: (err) => {
+                    this.resetData();
+                  },
+                });
             },
             error: (err) => {
               alert('Ride Ended');
-              this.curr.seatsAvailable += 1;
-              this.formData['Seats_Left'] = this.curr.seatsAvailable;
+              this.last.seatsAvailable += 1;
+              this.formData['Seats_Left'] = this.last.seatsAvailable;
               this.http
                 .put<any>('/admin/editRoutes', {
-                  startPoint: this.curr.startPoint,
-                  endPoint: this.curr.endPoint,
-                  distance: this.curr.distance,
-                  time: this.curr.time,
-                  date: this.curr.date,
-                  carModel: this.curr.carModel,
-                  registrationNo: this.curr.registrationNo,
-                  seatsAvailable: this.curr.seatsAvailable,
+                  startPoint: this.last.startPoint,
+                  endPoint: this.last.endPoint,
+                  distance: this.last.distance,
+                  time: this.last.time,
+                  date: this.last.date,
+                  carModel: this.last.carModel,
+                  registrationNo: this.last.registrationNo,
+                  seatsAvailable: this.last.seatsAvailable,
                 })
                 .subscribe({
                   next: (res) => {
@@ -162,18 +183,18 @@ export class HomeComponent implements OnInit {
               .subscribe({
                 next: (res) => {
                   alert('Booked Successfully');
-                  console.log(res);
+                  this.last = this.curr;
                   this.resetData();
                 },
                 error: (err) => {
                   alert('Booked Successfully');
-                  console.log(err);
+                  this.last = this.curr;
                   this.resetData();
                 },
               });
           } else {
             alert('error occurred!!');
-            console.log('error, need to delete data from bookings db');
+            // console.log('error, need to delete data from bookings db');
           }
         });
     } else {
